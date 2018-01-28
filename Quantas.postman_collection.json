@@ -1,0 +1,470 @@
+{
+	"id": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+	"name": "Quantas",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "Quantas Light Test - Negative",
+			"description": "",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"order": [
+				"8111f04f-367a-e4e6-3907-7931eeae650a",
+				"044e2c84-0050-c3f0-fb79-9296015c0494"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"auth": null,
+			"id": "7a9cc577-00b1-0d68-820a-78fc2ddab10f"
+		},
+		{
+			"name": "Quantas Light Test - Positive",
+			"description": "",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"order": [
+				"af9899e0-5221-6481-d287-597b39953824",
+				"6ff6f70e-d34b-ea18-1813-363b24595d42",
+				"47bf17b0-f8eb-2f91-d75f-6dce677a469d",
+				"aa551710-8eac-967e-736c-4ffc75da18d2"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"auth": null,
+			"id": "0508b68d-3afd-13e0-e2b8-486ebe55c763"
+		},
+		{
+			"name": "Quantas Light Test - Security",
+			"description": "",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"order": [
+				"2dd9802f-8112-ab2e-fda0-30c252015a0d",
+				"c3bb61e1-cc83-beba-0a38-eafceff421a5"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"auth": null,
+			"id": "80cb25d0-9e80-929b-b24f-32d02533f605"
+		}
+	],
+	"folders_order": [
+		"0508b68d-3afd-13e0-e2b8-486ebe55c763",
+		"7a9cc577-00b1-0d68-820a-78fc2ddab10f",
+		"80cb25d0-9e80-929b-b24f-32d02533f605"
+	],
+	"timestamp": 1516919145118,
+	"owner": 0,
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "044e2c84-0050-c3f0-fb79-9296015c0494",
+			"headers": "userId: 5550efcc-3a85-6b45-1f69-bf37b1b744f3\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "userId",
+					"value": "5550efcc-3a85-6b45-1f69-bf37b1b744f3",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://qa-challenges-lightbulb.atlassian.io/api/allmethods/on",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe06fe40-8567-44dd-9f54-7086a98840fb",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1516881999243,
+			"name": "Lights on with invalid value -0",
+			"description": "Setting the light on ",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"responses": [],
+			"isFromCollection": true,
+			"collection_id": "e7eb62e1-168d-061a-50e1-7715370ac718",
+			"rawModeData": "{ \"power\": 0\n\n\n}",
+			"folder": "7a9cc577-00b1-0d68-820a-78fc2ddab10f",
+			"preRequestScript": null,
+			"tests": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "2dd9802f-8112-ab2e-fda0-30c252015a0d",
+			"headers": "",
+			"headerData": [
+				{
+					"key": "",
+					"value": "",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "https://qa-challenges-lightbulb.atlassian.io/api/allmethods/off",
+			"folder": "80cb25d0-9e80-929b-b24f-32d02533f605",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55158ee1-e360-4224-a24e-725385cefa44",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Required userId header not found\");",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"auth": null,
+			"time": 1516919468551,
+			"name": "Lights off  without auth",
+			"description": "Api to set the lights off ",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\npm.test(\"Body matches string\", function () {\n    pm.expect(pm.response.text()).to.include(\"Required userId header not found\");\n});\n\n",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "47bf17b0-f8eb-2f91-d75f-6dce677a469d",
+			"headers": "userId: 5550efcc-3a85-6b45-1f69-bf37b1b744f3\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "userId",
+					"value": "5550efcc-3a85-6b45-1f69-bf37b1b744f3",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://qa-challenges-lightbulb.atlassian.io/api/allmethods/on",
+			"folder": "0508b68d-3afd-13e0-e2b8-486ebe55c763",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e32dca2-f49f-4d77-9b42-39a79485a81d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"auth": null,
+			"time": 1516919613144,
+			"name": "Lights on ( no params)",
+			"description": "Setting the light on ",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": ""
+		},
+		{
+			"id": "6ff6f70e-d34b-ea18-1813-363b24595d42",
+			"headers": "userId: 5550efcc-3a85-6b45-1f69-bf37b1b744f3\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "userId",
+					"value": "5550efcc-3a85-6b45-1f69-bf37b1b744f3",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://qa-challenges-lightbulb.atlassian.io/api/allmethods/on",
+			"folder": "0508b68d-3afd-13e0-e2b8-486ebe55c763",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca85fd50-d09a-4164-b3da-95981c701a11",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"auth": null,
+			"time": 1516919606550,
+			"name": "Lights on ( power=1)",
+			"description": "Setting the light on ",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\n",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{ \"power\": 1\n\n\n}"
+		},
+		{
+			"id": "8111f04f-367a-e4e6-3907-7931eeae650a",
+			"headers": "userId: 5550efcc-3a85-6b45-1f69-bf37b1b744f3\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "userId",
+					"value": "5550efcc-3a85-6b45-1f69-bf37b1b744f3",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://qa-challenges-lightbulb.atlassian.io/api/allmethods/on",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9d783753-7bf0-4243-bac1-c54aecce003c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1516881993239,
+			"name": "Lights on with invalid value (power = 61)",
+			"description": "Setting the light on ",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"responses": [],
+			"isFromCollection": true,
+			"collection_id": "e7eb62e1-168d-061a-50e1-7715370ac718",
+			"rawModeData": "{ \"power\": 61\n\n\n}",
+			"folder": "7a9cc577-00b1-0d68-820a-78fc2ddab10f",
+			"preRequestScript": null,
+			"tests": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "aa551710-8eac-967e-736c-4ffc75da18d2",
+			"headers": "userId: 5550efcc-3a85-6b45-1f69-bf37b1b744f3\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "userId",
+					"value": "5550efcc-3a85-6b45-1f69-bf37b1b744f3",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://qa-challenges-lightbulb.atlassian.io/api/allmethods/on",
+			"folder": "0508b68d-3afd-13e0-e2b8-486ebe55c763",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e32dca2-f49f-4d77-9b42-39a79485a81d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"auth": null,
+			"time": 1516919650133,
+			"name": "Lights on (power = 60)",
+			"description": "Setting the light on ",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{ \"power\": 60\n\n\n}"
+		},
+		{
+			"id": "af9899e0-5221-6481-d287-597b39953824",
+			"headers": "userId: 5550efcc-3a85-6b45-1f69-bf37b1b744f3\n",
+			"headerData": [
+				{
+					"key": "userId",
+					"value": "5550efcc-3a85-6b45-1f69-bf37b1b744f3",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://qa-challenges-lightbulb.atlassian.io/api/allmethods/off",
+			"folder": "0508b68d-3afd-13e0-e2b8-486ebe55c763",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4b36509-da7c-4ec1-97c3-37532a8372b0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"auth": null,
+			"time": 1516882001590,
+			"name": "Lights off ",
+			"description": "Api to set the lights off ",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"responses": [],
+			"isFromCollection": true,
+			"preRequestScript": null,
+			"tests": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "c3bb61e1-cc83-beba-0a38-eafceff421a5",
+			"headers": "",
+			"headerData": [
+				{
+					"key": "",
+					"value": "",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "https://qa-challenges-lightbulb.atlassian.io/api/allmethods/on",
+			"folder": "80cb25d0-9e80-929b-b24f-32d02533f605",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55158ee1-e360-4224-a24e-725385cefa44",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Required userId header not found\");",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"auth": null,
+			"time": 1516919518070,
+			"name": "Lights on  without auth copy",
+			"description": "Api to set the lights off ",
+			"collectionId": "b04ff601-91e5-e7f7-3c4a-d153c78fe572",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\npm.test(\"Body matches string\", function () {\n    pm.expect(pm.response.text()).to.include(\"Required userId header not found\");\n});\n\n",
+			"currentHelper": null,
+			"helperAttributes": null
+		}
+	]
+}
