@@ -12,7 +12,7 @@ It uses Postman Collections to run the tests
 
 How to Run it using Postman Tool
 
-1) Download the colletion
+1) Download the collection
 2) Download Postman tool
 3) Import the downloaded collection
 4) The collection Name is Quantas and it willl have options to run it besides the collection
